@@ -60,7 +60,8 @@ This project builds a robust deep learning model to classify retinal images and 
 
 ```bash
 # Clone repository
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/P-Gnanesh/Diabetic-Retinopathy-Detection.git
+cd Diabetic-Retinopathy-Detection
 
 # Install dependencies
 pip install -r requirements.txt
