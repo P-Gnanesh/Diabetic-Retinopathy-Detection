@@ -1,4 +1,5 @@
 # 🧠 Diabetic Retinopathy Detection using Swin CNN
+[![Jupyter Notebook](https://img.shields.io/badge/View_Notebook-Open_in_nbviewer-orange?logo=jupyter)](https://nbviewer.org/github/P-Gnanesh/Diabetic-Retinopathy-Detection/blob/main/ml-hl-proj-code%20%282%29.ipynb)
 
 > 🚀 Deep Learning project for automated detection of diabetic retinopathy from retinal fundus images with explainable AI insights.
 
