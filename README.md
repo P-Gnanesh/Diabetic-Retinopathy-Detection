@@ -11,11 +11,53 @@ Diabetic Retinopathy (DR) is a widespread microvascular complication of diabetes
 ---
 
 ## 🧠 Solution Approach
-- 🔍 Data preprocessing & augmentation
-- 🧩 Feature understanding using PCA
-- 🤖 Swin CNN model for classification
-- 🔥 Grad-CAM for model interpretability
-- 📊 Performance evaluation using multiple metrics
+## ⚙️ System Methodology & Proposed Solution
+
+To overcome the diagnostic limitations of standalone architectures, the proposed framework introduces a multi-modal, dual-engine hybrid architecture: the **Swin Transformer and CNN Hybrid Network with an integrated Natural Language Generation (NLG) module**. The overall solution pipeline operates across four precise, sequential engineering layers to transform a raw retinal image into an accurate multi-class classification and a transparent textual clinical description.
+
+---
+
+### 🎨 Layer 1: Artifact-Resilient Image Preprocessing
+Before entering the feature extraction networks, raw retinal fundus photographs undergo a standardized mathematical preprocessing sequence to eliminate image noise, remove lighting artifacts, and highlight hidden lesions:
+
+* **🖼️ Aspect-Ratio Preserving Normalization:** Input images are resized to a uniform architecture-compatible resolution of $224 \times 224$ pixels. This creates data consistency across the network while preserving the true spherical geometry of the fundus structures.
+* **⚡ Ben Graham Contrast Enhancement:** To enhance the visibility of subtle vascular abnormalities against background tissue, the pipeline applies a Gaussian blur color-subtraction matrix:
+  $$I_{enhanced} = 4I - 4G_{\sigma}(I) + 128$$
+  This formula isolates high-frequency spatial details, making microaneurysms, hemorrhages, and exudates drastically sharper for the model branches to pinpoint.
+* **🎯 Circular Retinal Masking:** A spatial filtering mask calculates the exact circular boundaries of the active retina, clipping out black background margins and edge noise to ensure the extractors process only real anatomical regions.
+
+---
+
+### 🔄 Layer 2: Asymmetric Dual-Stream Feature Extraction
+Rather than relying on a single model backbone, the core of the solution splits feature extraction into two parallel, highly specialized branches to simultaneously capture micro and macro structures:
+
+#### 🧬 Stream A: The CNN Local-Texture Engine (EfficientNet-B0)
+* **🎯 Purpose:** Targeted extraction of micro-lesions.
+* **⚙️ Mechanism:** Using small, localized receptive fields and standard convolution operations, this branch extracts high-frequency, fine-grained visual features. It is heavily optimized to preserve the distinct structural boundaries of tiny microaneurysms, hard exudates, and localized blood leakages.
+* **🔌 Channel Attention:** This stream is further refined using Squeeze-and-Excitation (SE) blocks to compute global channel-wise statistics and adaptively recalibrate feature weights, ensuring the most discriminative lesion channels are prioritized.
+
+#### 🌐 Stream B: The Swin Transformer Global-Context Engine
+* **🎯 Purpose:** Capturing macro-structural alterations and long-range structural dependencies.
+* **⚙️ Mechanism:** The Swin Transformer branch solves the high computational complexity of traditional transformers by computing self-attention within localized, non-overlapping windows:
+  $$\text{Attention}(Q,K,V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d}} + B\right)V$$
+* **🪟 Shifted Windowing:** By shifting the window partition between consecutive layers, it allows features to interact across boundaries. This lets the network model long-range spatial patterns, such as extensive peripheral neovascularization networks, which pure CNNs miss due to their restricted local receptive fields.
+
+---
+
+### 🔀 Layer 3: Multi-Head Cross-Attention Fusion
+The true bottleneck of hybrid networks is the fusion of asymmetric data shapes. Instead of using simple concatenation or pooling—which destroys spatial relationships—this solution introduces a **Multi-Head Cross-Attention (MHCA) Layer**.
+
+* **🔗 The Integration:** The global contextual embeddings from the Swin Transformer stream are projected into a Query ($Q$) matrix, while the dense spatial lesion features from the CNN stream are projected into Key ($K$) and Value ($V$) matrices.
+* **🧠 Dynamic Querying:** By computing cross-attention, the system allows the global background context to dynamically query local lesion texture spaces. For example, if the global branch registers generalized background retinopathy patterns, the cross-attention layer automatically focuses high-weight vectors onto the precise local keys where micro-lesions reside.
+* **📊 Classification Output:** The unified cross-attention feature vector is passed to a fully connected dense layer using GELU activation and dropout regularization. To address severe data distribution inequalities, the model employs a class-weighted cross-entropy loss function paired with label smoothing to output final class probabilities across the 5-grade clinical severity spectrum.
+
+---
+
+### 📝 Layer 4: Explainable AI (XAI) Natural Language Generation
+To move past the traditional "black box" limitations of deep learning in medicine, the final component of the solution maps internal network attention directly to a **Natural Language Generation (NLG) module**.
+
+* **🔤 Visual-to-Textual Translation:** Instead of generating purely visual heatmaps (like Grad-CAM) that leave clinicians with the cognitive burden of interpreting colored regions, this module maps the cross-attention feature weights directly into text-generation clinical explanations.
+* **📋 Automated Clinical Reporting:** The network translates the active, high-weight attention regions into clinically coherent text, automatically generating descriptions of the detected lesions and providing a transparent, written rationale for the assigned severity grade. This allows the output to integrate seamlessly into electronic health records and real-world teleophthalmology screening workflows.
 
 ---
 
