@@ -109,15 +109,4 @@ To move past the traditional "black box" limitations of deep learning in medicin
 
 ---
 
-## 🚀 How to Run
 
-```bash
-# Clone repository
-git clone https://github.com/P-Gnanesh/Diabetic-Retinopathy-Detection.git
-cd Diabetic-Retinopathy-Detection
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run notebook
-jupyter notebook
