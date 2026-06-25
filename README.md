@@ -6,8 +6,7 @@
 ---
 
 ## 📌 Problem Statement
-Diabetic Retinopathy is a leading cause of blindness if not detected early.  
-This project builds a robust deep learning model to classify retinal images and assist in early diagnosis.
+Diabetic Retinopathy (DR) is a widespread microvascular complication of diabetes that requires timely and accurate diagnosis to prevent irreversible blindness. However, manual screening by ophthalmologists is resource-intensive, time-consuming, and prone to inter-observer variability, creating a massive demand for scalable, automated diagnostic solutions.  Despite recent progress in deep learning, existing automated screening systems suffer from three critical limitations that prevent their deployment in real-world clinical environments:Architectural Limitations: Pure Convolutional Neural Networks (CNNs) are constrained by local receptive fields, failing to capture long-range spatial dependencies like peripheral neovascularization. Conversely, pure Vision Transformers (ViTs) model global context effectively but often miss fine-grained, localized lesions such as microaneurysms that are essential for early-stage detection.  The "Black Box" Opaque Boundary: Existing highly accurate models operate as black boxes, outputting classification grades without interpretable diagnostic reasoning, which fundamentally undermines clinical trust and regulatory approval.  Cognitive Interpretation Burden: Current Explainable AI (XAI) approaches rely heavily on visual heatmaps (e.g., Grad-CAM), which place a heavy cognitive burden on clinicians to mentally map highlighted regions to actual clinical terminology. There is an absolute absence of screening systems capable of translating internal attention maps into structured, natural language clinical explanations that fit directly into healthcare and teleophthalmology workflows.
 
 ---
 
