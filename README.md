@@ -1,5 +1,16 @@
-# 🧠 Diabetic Retinopathy Detection using Swin CNN
+# 👁️ Enhancing Trust in Automated Screening: A Swin Transformer and CNN Hybrid Network for Diabetic Retinopathy Diagnosis with Natural Language Explanation
+
+An advanced, explainable deep learning framework that leverages a hybrid architecture combining global contextual awareness with local feature extraction to accurately grade Diabetic Retinopathy (DR) from retinal fundus images.
+
+## 📖 How to View the Source Code
+
+> [!IMPORTANT]
+> Because this Jupyter Notebook (`.ipynb`) contains rich training history visualizations, interactive loss/accuracy curves, and high-resolution medical imaging layers, the file size exceeds GitHub's standard static web-rendering limits. 
+
+To view the fully executed pipeline, interactive dashboards, and complete source code without rendering freezes or truncation errors, please **click the orange `Open in nbviewer` badge** below or click the direct quick link:
+
 [![Jupyter Notebook](https://img.shields.io/badge/View_Notebook-Open_in_nbviewer-orange?logo=jupyter)](https://nbviewer.org/github/P-Gnanesh/Diabetic-Retinopathy-Detection/blob/main/ml-hl-proj-code%20%282%29.ipynb)
+
 
 > 🚀 Deep Learning project for automated detection of diabetic retinopathy from retinal fundus images with explainable AI insights.
 
